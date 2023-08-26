@@ -27,7 +27,7 @@ $chromehistorycopypath="dumped\chrome"
 Copy-Item -Path $origin_chrome_path -Destination $chromehistorycopypath -Force -ErrorAction SilentlyContinue
 
 #Asks user for desired path to copy and then copies it and its contents.
-echo "Write your desired path to copy:"
+Write-Output "Write your desired path to copy:"
 $wantedpath=Read-Host
 $wantedcopy="dumped/wantedfolder"
 Copy-Item -Path $wantedpath -Destination $wantedcopy -Recurse -Force -ErrorAction Continue
