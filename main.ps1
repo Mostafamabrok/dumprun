@@ -1,9 +1,9 @@
-mkdir dumped -Force #all the dumped data is stored in here
-mkdir dumped/edge -Force #All the MS edge data is stored here
-mkdir dumped/chrome -Force #All Google Chrome data is stored here
-mkdir dumped/wantedfolder -Force #Desired Path contents are put here
+mkdir dumped -Force #all the dumped data is stored in here.
+mkdir dumped/edge -Force #All the MS edge data is stored here.
+mkdir dumped/chrome -Force #All Google Chrome data is stored here.
+mkdir dumped/wantedfolder -Force #Desired Path contents are put here.
 
-#below is just standard system and network info
+#below is just standard system and network info.
 arp -a > dumped/iplist.txt 
 ipconfig > dumped/ipconfig.txt 
 ipconfig /displaydns > dumped/dnsdisplay.txt 
@@ -21,12 +21,12 @@ $origin_edge_path="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data
 $edgehistorycopypath="dumped\edge"
 Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction SilentlyContinue
 
-#This command copies chrome history data to dumped/chrome
+#This command copies chrome history data to dumped/chrome.
 $origin_chrome_path="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default\History"
 $chromehistorycopypath="dumped\chrome"
 Copy-Item -Path $origin_chrome_path -Destination $chromehistorycopypath -Force -ErrorAction SilentlyContinue
 
-#Asks user for desired path to copy and then copies it and its contents
+#Asks user for desired path to copy and then copies it and its contents.
 echo "Write your desired path to copy:"
 $wantedpath=Read-Host
 $wantedcopy="dumped/wantedfolder"
