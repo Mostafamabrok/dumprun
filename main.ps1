@@ -38,9 +38,9 @@ catch {
 }
 
 Write-Host "Do you want to copy a folder? (y/n):"
-$permission = Read-Host
+$copy_permission = Read-Host
 
-if ($permission -eq "y") {
+if ($copy_permission -eq "y") {
     #Asks user for desired path to copy and then copies it and its contents.
     Write-Output "Write your desired path to copy:"
     $wantedpath=Read-Host
