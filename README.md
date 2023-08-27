@@ -6,7 +6,7 @@ This Repository was made for educational purposes.
 ### Important Usage Information
 * All data collected by Dumprun is stored in the `dumped/` directory.
 * The `dumped/` directory is created when `main.ps1` is executed.
-* To run, execute `main.ps1` with powershell, or use the command in command.txt
+* To run, execute `main.ps1` with powershell, or use the command in command.txt in the same directory.
 
 ### Dumped Data Table
 
