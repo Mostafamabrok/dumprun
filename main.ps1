@@ -37,8 +37,17 @@ catch {
     Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
 }
 
-#Asks user for desired path to copy and then copies it and its contents.
-Write-Output "Write your desired path to copy:"
-$wantedpath=Read-Host
-$wantedcopy="dumped/wantedfolder"
-Copy-Item -Path $wantedpath -Destination $wantedcopy -Recurse -Force -ErrorAction Continue
+Write-Host "Do you want to copy a folder? (y/n):"
+$permission = Read-Host
+
+if ($permission -eq "y") {
+    #Asks user for desired path to copy and then copies it and its contents.
+    Write-Output "Write your desired path to copy:"
+    $wantedpath=Read-Host
+    $wantedcopy="dumped/wantedfolder"
+    Copy-Item -Path $wantedpath -Destination $wantedcopy -Recurse -Force -ErrorAction Continue
+}
+
+if ($permission -eq "n"){
+    Write-Host "Continuing on with the program."
+}
