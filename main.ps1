@@ -49,6 +49,6 @@ if ($copy_permission -eq "y") {
     Copy-Item -Path $wantedpath -Destination $wantedcopy -Recurse -Force -ErrorAction Continue
 }
 
-if ($permission -eq "n"){
+if ($copy_permission -eq "n"){
     Write-Host "Continuing on with the program."
 }
