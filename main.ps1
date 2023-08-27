@@ -3,7 +3,7 @@ mkdir dumped/edge -Force #All the MS edge data is stored here.
 mkdir dumped/chrome -Force #All Google Chrome data is stored here.
 mkdir dumped/wantedfolder -Force #Desired Path contents are stored here.
 
-#below is just standard system and network info.
+#Below is just standard system and network info.
 arp -a > dumped/iplist.txt 
 ipconfig > dumped/ipconfig.txt 
 ipconfig /displaydns > dumped/dnsdisplay.txt 
