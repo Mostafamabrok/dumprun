@@ -23,7 +23,7 @@ try {
     Copy-Item -Path $origin_edge_path -Destination $edgehistorycopypath -Force -ErrorAction Stop
 }
 catch {
-    Write-Host "Edge Is not installed on this device."
+    Write-Host "Edge Is not installed on this device, or the history folder is not available."
 }
 
 
@@ -34,7 +34,7 @@ try {
     Copy-Item -Path $origin_chrome_path -Destination $chromehistorycopypath -Force -ErrorAction Stop
 }
 catch {
-    Write-Host "Google Chrome is not installed on this device."
+    Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
 }
 
 #Asks user for desired path to copy and then copies it and its contents.
