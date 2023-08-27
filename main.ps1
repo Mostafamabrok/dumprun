@@ -29,7 +29,7 @@ catch {
     Write-Host "Edge Is not installed on this device, or the history folder is not available."
 }
 
-#The reason we make the error action stop for the history data retreivers is so try catch can catch them and write a message.
+#The reason we make the error action stop so the history data retreivers is so try catch can catch them and write a message.
 
 try {
     #This command copies chrome history data to dumped/chrome.
