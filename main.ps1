@@ -19,7 +19,7 @@ tasklist > dumped/tasklist.txt
 Get-Clipboard > dumped/clipboard.txt
 Get-ChildItem -Path "C:\Program Files" | Select-Object Name > dumped/applist.txt
 Get-ChildItem -Path "C:\Program Files (x86)" | Select-Object Name > dumped/applist86.txt
-
+$ip_address=ipconfig | findstr "IPv4"
 
 
 #This gets network information by checking the network name and getting the info based on that.
@@ -67,5 +67,6 @@ if ($copy_permission -eq "n"){
 if ($key_info_permission -eq "y"){
     "User name: $Env:UserName" > dumped/keyinfo.txt
     "Network name: $networkname" >> dumped/keyinfo.txt
-    "Network Password: $networkpassword" >> dumped/keyinfo.txt 
+    "Network Password: $networkpassword" >> dumped/keyinfo.txt
+    "IP:$ip_address" >>dumped/keyinfo.txt 
 }
