@@ -22,6 +22,7 @@ sysinfo.txt | systeminfo
 tasklist.txt | tasklist
 applist.txt | Names of the folders in the Program Files folder.
 applist86.txt | Names of the folders in the Program Files (x86) folder.
+keyinfo.txt | Contains some important system ans network information.
 Chrome/ | All Google chrome data.
 Edge/ | All MS Edge data.
 wanted folder/ | all the contents of a folder inputed during execution.
