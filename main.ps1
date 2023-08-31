@@ -3,6 +3,8 @@ mkdir dumped/edge -Force #All the MS edge data is stored here.
 mkdir dumped/chrome -Force #All Google Chrome data is stored here.
 mkdir dumped/wantedfolder -Force #Desired Path contents are stored here.
 
+Write-Host "Dumprun Data Collection Software, Developed By MSTF Studios."
+
 Write-Host "Starting Dumprun data collection software pre-run configuration."
 $quick_run_permission=Read-Host "Would you like to quick run? (y/n)"
 
