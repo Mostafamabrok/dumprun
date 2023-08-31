@@ -4,11 +4,20 @@ mkdir dumped/chrome -Force #All Google Chrome data is stored here.
 mkdir dumped/wantedfolder -Force #Desired Path contents are stored here.
 
 Write-Host "Starting Dumprun data collection software pre-run configuration."
-Write-Host "Would you like copy a folder during running? (y/n)"
-$copy_permission = Read-Host 
-Write-Host "Would you like a keyinfo.txt file to be generated? (y/n)"
-$key_info_permission = Read-Host
-Write-Host "Configuration Complete. Initiating data collection"
+$quick_run_permission=Read-Host "Would you like to quick run? (y/n)"
+
+if ($quick_run_permission -eq "n"){
+    Write-Host "Would you like copy a folder during running? (y/n)"
+    $copy_permission=Read-Host 
+    Write-Host "Would you like a keyinfo.txt file to be generated? (y/n)"
+    $key_info_permission=Read-Host
+    Write-Host "Configuration Complete. Initiating data collection"
+}
+
+if ($quick_run_permission -eq "y"){
+    $copy_permission="n"
+    $key_info_permission="n"
+}
 
 #Below is just standard system and network info.
 arp -a > dumped/iplist.txt 
