@@ -60,7 +60,7 @@ try {
     $destination_path_chrome="dumped\chrome"
     Write-Host "Retreiving Chrome Data..."
     Copy-Item -Path $source_path_chrome -Destination $destination_path_chrome -Recurse -Force -ErrorAction Stop
-    Write-Host "Collected Chrome Browsing Historym `n"
+    Write-Host "Collected Chrome Browsing History `n"
 }
 catch {
     Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
