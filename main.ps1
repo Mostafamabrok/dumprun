@@ -40,6 +40,28 @@ $networkpassword=Netsh wlan show profile name=$networkname key=clear |findstr "K
 Netsh wlan show profile name=$networkname key=clear > dumped/networkinfo.txt
 
 
+if ($copy_permission -eq "y") {
+    #Asks user for desired path to copy and then copies it and its contents.
+    Write-Output "Write your desired path to copy:"
+    $wantedpath=Read-Host
+    $wantedcopy="dumped/wantedfolder"
+    Copy-Item -Path $wantedpath -Destination $wantedcopy -Recurse -Force -ErrorAction Continue
+    Write-Host "Copied Directory"
+}
+
+if ($copy_permission -eq "n"){
+    Write-Host "Continuing on with the program.`n"
+}
+
+
+if ($key_info_permission -eq "y"){
+    "User name: $Env:UserName" > dumped/keyinfo.txt
+    "Network name: $networkname" >> dumped/keyinfo.txt
+    "Network Password: $networkpassword" >> dumped/keyinfo.txt
+    "IP:$ip_address" >>dumped/keyinfo.txt 
+    Write-Host "Keyinfo Document retreived."
+}
+
 try {
     #This command copies edge history data to dumped/edge
     $source_path_edge="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default"
@@ -64,29 +86,6 @@ try {
 }
 catch {
     Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
-}
-
-
-if ($copy_permission -eq "y") {
-    #Asks user for desired path to copy and then copies it and its contents.
-    Write-Output "Write your desired path to copy:"
-    $wantedpath=Read-Host
-    $wantedcopy="dumped/wantedfolder"
-    Copy-Item -Path $wantedpath -Destination $wantedcopy -Recurse -Force -ErrorAction Continue
-    Write-Host "Copied Directory"
-}
-
-if ($copy_permission -eq "n"){
-    Write-Host "Continuing on with the program.`n"
-}
-
-
-if ($key_info_permission -eq "y"){
-    "User name: $Env:UserName" > dumped/keyinfo.txt
-    "Network name: $networkname" >> dumped/keyinfo.txt
-    "Network Password: $networkpassword" >> dumped/keyinfo.txt
-    "IP:$ip_address" >>dumped/keyinfo.txt 
-    Write-Host "Keyinfo Document retreived."
 }
 
 Write-Host "`nData Collection complete."
