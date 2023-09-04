@@ -89,4 +89,4 @@ if ($key_info_permission -eq "y"){
     Write-Host "Keyinfo Document retreived."
 }
 
-Write-Host "`nProgram complete."
+Write-Host "`nData Collection complete."
