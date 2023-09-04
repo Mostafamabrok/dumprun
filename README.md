@@ -1,9 +1,7 @@
 # Dumprun
 You run it, and it dumps.
 
-Dumprun is a data collection software that gathers important system data and bundles it into a convinient litle folder. 
-
-Dumprun runs discretley and stealthily, allowing you to use it on a wide variety of devices.
+Dumprun is a data collection software that gathers important system data and bundles it into a convinient litle folder. Dumprun runs discretley and stealthily, allowing you to use it on a wide variety of devices.
 
 This Repository was made for educational purposes.
 
