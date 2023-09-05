@@ -12,12 +12,14 @@ $quick_run_permission=Read-Host "Would you like to quick run? (y/n)"
 if ($quick_run_permission -eq "n"){
     $copy_permission=Read-Host "Would you like copy a folder during running? (y/n)"
     $key_info_permission=Read-Host "Would you like a keyinfo.txt file to be generated? (y/n)"
+    $browser_data_permisson=Read-Host "Would you like to extract browser data? (y/n)"
     Write-Host "Configuration Complete. Initiating data collection"
 }
 
 if ($quick_run_permission -eq "y"){
     $copy_permission="n"
     $key_info_permission="n"
+    $browser_data_permisson="n"
 }
 
 #Below is just standard system and network info.
@@ -60,6 +62,7 @@ if ($key_info_permission -eq "y"){
     Write-Host "Keyinfo Document retreived."
 }
 
+if ($browser_data_permisson -eq "y"){
 try {
     #This command copies edge history data to dumped/edge
     $source_path_edge="C:\Users\$Env:UserName\AppData\Local\Microsoft\Edge\User Data\Default"
@@ -84,6 +87,7 @@ try {
 }
 catch {
     Write-Host "Google Chrome is not installed on this device, or the history folder is not available."
+}
 }
 
 Write-Host "`nData Collection complete."
